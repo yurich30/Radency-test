@@ -2,6 +2,7 @@ import React from 'react'
 import CSVReader from 'react-csv-reader';
 import {parse} from 'papaparse'
 import './App.css';
+import Table from './components/Table';
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
 		transformHeader: header =>
 		  header
 			.toLowerCase()
-			.replace(/\W/g, '_')
+			.replace(/\W/g, '')
 			.slice()
 	  }
 
@@ -57,6 +58,7 @@ function App() {
 					})
 				}}>
 			DROP .CSV FILE HERE</div>
+			<Table workers={workers}/>
     </div>
   );
 }
