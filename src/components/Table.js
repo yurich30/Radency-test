@@ -1,3 +1,4 @@
+import moment from 'moment';
 import './Table.css'
 
 const Table = (props) => {
@@ -21,6 +22,12 @@ const Table = (props) => {
 		let validNumber = number.toFixed(2)
 		return validNumber
 	}
+
+    const regExpDate = /[0-9]{1,4}[-/]{1}[0-9]{1,2}[-/]{1}[0-9]{2,4}/gi
+	let currentDate = parseFloat(moment().add(10, 'days').calendar());
+	const format = "YYYY-MM-DD"
+	let date = new Date();
+	let dateTime = parseFloat(moment(date).format(format));
 
     return (
         <div>
@@ -50,7 +57,7 @@ const Table = (props) => {
                         <td className={worker.yearlyincome > 1000000 ? "invalid" : ""}>{getValidNumberFromString(worker.yearlyincome)}</td>
                         <td>{worker.haschildren ? "true" : "false"}</td>
                         <td>{worker.licensestates}</td>
-                        <td>{worker.expirationdate}</td>
+                        <td className={parseFloat(worker.expirationdate) <= currentDate || parseFloat(worker.expirationdate) <= dateTime && regExpDate.test(worker.expirationdate) ? "" : "invalid"}>{worker.expirationdate}</td>
                         <td>{worker.licensenumber}</td>
                         <td>{getDuplicatedEmails()[worker.id]}</td>
                     </tr>)}
