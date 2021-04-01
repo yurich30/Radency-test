@@ -48,7 +48,7 @@ const Table = (props) => {
                         <td className={worker.age < 21 || 0 ? "invalid" : ""}>{worker.age}</td>
                         <td className={worker.experience > worker.age || worker.experience <= 0 ? "invalid" : ""}>{worker.experience}</td>
                         <td className={worker.yearlyincome > 1000000 ? "invalid" : ""}>{getValidNumberFromString(worker.yearlyincome)}</td>
-                        <td>{worker.haschildren}</td>
+                        <td>{worker.haschildren ? "true" : "false"}</td>
                         <td>{worker.licensestates}</td>
                         <td>{worker.expirationdate}</td>
                         <td>{worker.licensenumber}</td>
