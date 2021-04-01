@@ -57,7 +57,7 @@ const Table = (props) => {
                         <td className={worker.yearlyincome > 1000000 ? "invalid" : ""}>{getValidNumberFromString(worker.yearlyincome)}</td>
                         <td>{worker.haschildren ? "true" : "false"}</td>
                         <td>{worker.licensestates}</td>
-                        <td className={parseFloat(worker.expirationdate) <= currentDate || parseFloat(worker.expirationdate) <= dateTime && regExpDate.test(worker.expirationdate) ? "" : "invalid"}>{worker.expirationdate}</td>
+                        <td className={regExpDate.test(worker.expirationdate) && parseFloat(worker.expirationdate) <= currentDate || parseFloat(worker.expirationdate) <= dateTime ? "" : "invalid"}>{worker.expirationdate}</td>
                         <td className={worker.licensenumber.length === 6 ? "" : "invalid"}>{worker.licensenumber}</td>
                         <td>{getDuplicatedEmails()[worker.id]}</td>
                     </tr>)}

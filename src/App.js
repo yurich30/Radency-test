@@ -19,14 +19,14 @@ function App() {
 			.toLowerCase()
 			.replace(/\W/g, '')
 			.slice()
-	  }
-
+	}
+	
   return (
     <div className="App">
 		<div>
 			<h1 className="App">Import Workers</h1>
 			<div className="imp">
-				<CSVReader  parserOptions={parseOptions} onFileLoaded={async (data) => await setWorkers(prev => [...prev, ...data] )} />
+				<CSVReader  parserOptions={parseOptions} onFileLoaded={(data) => setWorkers(prev => [...prev, ...data] )} />
 			</div>
 		</div>
 		<div
@@ -52,7 +52,7 @@ function App() {
 								.replace(/\W/g, '')
 								.slice()
 							})
-						console.log(result)
+						console.log((result));
 						setWorkers( prev => [...prev, ...result.data] )
 					})
 				}}>

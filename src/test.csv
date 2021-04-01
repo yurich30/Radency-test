@@ -1,0 +1,9 @@
+id,Full Name,Phone,Email,Age,Experience,Yearly Income,Has children,License states,Expiration Date,License number
+1,Alex Cho,1890099191,cho.cho@i.com,12,11,1200.111,true,Alabama,12/12/2030,1xr567
+2,Blake Griffin,3810000000,blakeG@gmail.com,28,32,100000,false,Lviv,12/10/1930,23cv111
+3,Sam Smith,89009919187,ach@s.com,45,20,1000001,,"CA, LA",14/12/3000,xty771
+4,Chris Paul,1234567890,cp3@gmail.com,34,12,200000,true,LA,12/9/1999,123red
+5,Chris Paul,1234567890,cp3@gmail.com,34,12,200000,true,LA,8/4/2040,123red
+6,Sam Smith,89009919187,ach@s.com,45,20,1000001,false,"CA, LA",3/3/2024,xty771
+7,Blake Griffin,3810000000,blakeG@gmail.com,28,32,100000,false,Lviv,1930-12-13,23cv111
+8,Alex Cho,1890099191,cho.cho@i.com,12,11,1200.11,true,Alabama,2/8/2022,1xr567
