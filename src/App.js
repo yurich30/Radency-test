@@ -6,6 +6,7 @@ import './App.css';
 function App() {
 
 	const [workers, setWorkers] = React.useState([])
+	const [highlited, setHighlited] = React.useState(false);
 	console.log(workers);
 	
 	const parseOptions = {
@@ -28,10 +29,16 @@ function App() {
 			</div>
 		</div>
 		<div
+			className={highlited ? "active" : "unactive"}
+			onDragEnter={
+				() => {setHighlited(true)}
+			}
+			onDragLeave={() => {setHighlited(false)}}
 			onDragOver={(e) => {
 				e.preventDefault()
 			}}
 			onDrop={(e) => {
+				setHighlited(false)
 				e.preventDefault();
 				Array.from(e.dataTransfer.files)
 					.filter(file => file.type === 'text/csv')

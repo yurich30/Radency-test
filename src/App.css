@@ -7,3 +7,22 @@
   margin: 0 auto;
   padding-left: 70px;
 }
+.active{
+  background-color: greenyellow;
+  border: 1px solid green;
+  width: 253px;
+  height: 50px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.unactive{
+  width: 253px;
+  height: 50px;
+  margin: 10px auto;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
