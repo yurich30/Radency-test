@@ -1,3 +1,5 @@
+import './Table.css'
+
 const Table = (props) => {
 
     const workers = props.workers;
