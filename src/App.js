@@ -26,7 +26,7 @@ function App() {
 		<div>
 			<h1 className="App">Import Workers</h1>
 			<div className="imp">
-				<CSVReader  parserOptions={parseOptions} onFileLoaded={(data) => setWorkers( prev => [...prev, ...data] )} />
+				<CSVReader  parserOptions={parseOptions} onFileLoaded={async (data) => await setWorkers(prev => [...prev, ...data] )} />
 			</div>
 		</div>
 		<div
@@ -49,10 +49,9 @@ function App() {
 							{header: true, transformHeader: header =>
 								header
 								.toLowerCase()
-								.replace(/\W/g, '_')
+								.replace(/\W/g, '')
 								.slice()
 							})
-						result = JSON.parse(JSON.stringify(result).replace(/\s(?=\w+":)/g, "").toLowerCase());
 						console.log(result)
 						setWorkers( prev => [...prev, ...result.data] )
 					})

@@ -4,6 +4,18 @@ const Table = (props) => {
 
     const workers = props.workers;
 
+    function getDuplicatedEmails () {
+		const duplicatedEmailsById = {};
+		const isEmailDuplicated = (worker, compareWorker) => worker.email.toLowerCase() === compareWorker.email.toLowerCase()
+		const isIndexDuplicated = (index, compareIndex) =>  index < compareIndex
+		workers.forEach( (worker, index) => workers.forEach((compareWorker, compareWorkerIndex) => {
+			if (worker.id !== compareWorker.id && isEmailDuplicated(worker, compareWorker) && !duplicatedEmailsById[worker.id] && isIndexDuplicated(index, compareWorkerIndex)){
+				duplicatedEmailsById[worker.id] = compareWorker.id;
+			}
+		}) )
+		return duplicatedEmailsById
+	}
+
     return (
         <div>
             <table className="table">
@@ -34,7 +46,7 @@ const Table = (props) => {
                         <td>{worker.licensestates}</td>
                         <td>{worker.expirationdate}</td>
                         <td>{worker.licensenumber}</td>
-                        <td></td>
+                        <td>{getDuplicatedEmails()[worker.id]}</td>
                     </tr>)}
             </table>
         </div>
