@@ -1,5 +1,6 @@
 import React from 'react'
 import CSVReader from 'react-csv-reader';
+import {parse} from 'papaparse'
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
 		  header
 			.toLowerCase()
 			.replace(/\W/g, '_')
+			.slice()
 	  }
 
   return (
@@ -25,6 +27,29 @@ function App() {
 				<CSVReader  parserOptions={parseOptions} onFileLoaded={(data) => setWorkers( prev => [...prev, ...data] )} />
 			</div>
 		</div>
+		<div
+			onDragOver={(e) => {
+				e.preventDefault()
+			}}
+			onDrop={(e) => {
+				e.preventDefault();
+				Array.from(e.dataTransfer.files)
+					.filter(file => file.type === 'text/csv')
+					.forEach( async (file) => {
+						const text = await file.text();
+						let result = parse(text, 
+							{header: true, transformHeader: header =>
+								header
+								.toLowerCase()
+								.replace(/\W/g, '_')
+								.slice()
+							})
+						result = JSON.parse(JSON.stringify(result).replace(/\s(?=\w+":)/g, "").toLowerCase());
+						console.log(result)
+						setWorkers( prev => [...prev, ...result.data] )
+					})
+				}}>
+			DROP .CSV FILE HERE</div>
     </div>
   );
 }
