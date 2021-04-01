@@ -16,6 +16,12 @@ const Table = (props) => {
 		return duplicatedEmailsById
 	}
 
+    function getValidNumberFromString (str) {
+		let number = parseFloat(str);
+		let validNumber = number.toFixed(2)
+		return validNumber
+	}
+
     return (
         <div>
             <table className="table">
@@ -41,7 +47,7 @@ const Table = (props) => {
                         <td>{worker.email}</td>
                         <td className={worker.age < 21 || 0 ? "invalid" : ""}>{worker.age}</td>
                         <td className={worker.experience > worker.age || worker.experience <= 0 ? "invalid" : ""}>{worker.experience}</td>
-                        <td>{worker.yearlyincome}</td>
+                        <td className={worker.yearlyincome > 1000000 ? "invalid" : ""}>{getValidNumberFromString(worker.yearlyincome)}</td>
                         <td>{worker.haschildren}</td>
                         <td>{worker.licensestates}</td>
                         <td>{worker.expirationdate}</td>
