@@ -39,7 +39,7 @@ const Table = (props) => {
                         <td>{worker.fullname}</td>
                         <td>{worker.phone}</td>
                         <td>{worker.email}</td>
-                        <td>{worker.age}</td>
+                        <td  className={worker.age < 21 || 0 ? "invalid" : ""}>{worker.age}</td>
                         <td>{worker.experience}</td>
                         <td>{worker.yearlyincome}</td>
                         <td>{worker.haschildren}</td>

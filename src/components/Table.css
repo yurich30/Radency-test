@@ -7,3 +7,7 @@
 .table td{
     border: 1px solid black;
 }
+.invalid{
+    color: white;
+    background-color: red;
+}
